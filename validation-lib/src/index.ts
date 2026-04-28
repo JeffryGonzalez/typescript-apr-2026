@@ -6,5 +6,5 @@ export {
     minLength,
     maxLength,
     compose,
-    exactLength
+    min
 } from './validators.js';

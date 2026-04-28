@@ -1,5 +1,5 @@
 import { describe, expect, it} from 'vitest';
-import { compose, exactLength, maxLength, minLength, required } from '../src';
+import { compose, exactLength, maxLength, min, minLength, required } from '../src';
 
 describe("required", () => {
     it("passes for a non-empty string", () => {
@@ -52,8 +52,12 @@ describe("required", () => {
         
     })
 
-    describe.skip('Min and Max Numbers', () => {
-
+    describe('Min and Max Numbers', () => {
+        it('does minimum', () => {
+            const minOf10 = min(10);
+            expect(minOf10(10).valid).toBe(true);
+            expect(minOf10(9).valid).toBe(false);
+        })
     });
 
     describe.skip('Email Addresses',() => {
@@ -61,5 +65,9 @@ describe("required", () => {
     });
     describe.skip('Url', () => {
 
+    });
+
+    describe.skip('Credit Card Number using Mod 10 / Luhn', () => {
+        // https://en.wikipedia.org/wiki/Luhn_algorithm
     });
 })

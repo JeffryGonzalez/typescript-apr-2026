@@ -17,6 +17,9 @@ export const minLength =
  (n: number): Validator<string> =>
  (value) => value.length <= n ? ok : fail(`Must be at less than ${n} characters`)
 
+
+ export const min = 
+ (n:number): Validator<number> => (value) =>  ok;
  // Below is JSDoc a way to document ts and js functions.
 
 /**
