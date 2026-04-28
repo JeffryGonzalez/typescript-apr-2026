@@ -34,5 +34,9 @@ declare const required: Validator<string>;
 declare const minLength: (n: number) => Validator<string>;
 declare const maxLength: (n: number) => Validator<string>;
 //#endregion
-export { compose, email, exactLength, fail, isValidCreditCard, max, maxLength, min, minLength, ok, required };
+//#region src/internal/seating.d.ts
+type SeatType = "window" | "aisle" | "middle" | "jump";
+declare const getSeatCost: (seat: SeatType) => 100.23 | 85.43 | 105.23 | 50;
+//#endregion
+export { type SeatType, compose, email, exactLength, fail, getSeatCost, isValidCreditCard, max, maxLength, min, minLength, ok, required };
 //# sourceMappingURL=index.d.mts.map

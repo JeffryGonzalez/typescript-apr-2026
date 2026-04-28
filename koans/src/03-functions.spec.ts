@@ -118,6 +118,7 @@ describe('functions as values — the mental shift', () => {
       return fn(fn(value));
     }
 
+
     const addOne = (n: number): number => n + 1;
 
     // TODO: pass `addOne` to `applyTwice` with the starting value 5.

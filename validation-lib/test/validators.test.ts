@@ -15,7 +15,7 @@ describe("required", () => {
     expect(required("Hello")).toEqual({ valid: true });
   });
 
-  it.each(["", " ", "     ", "  x"])("fails for an empty string", (input: string) => {
+  it.each(["", " ", "     "])("fails for an empty string", (input: string) => {
     const result = required(input);
     expect(result.valid).toBe(false);
     // more here soon.
@@ -23,6 +23,18 @@ describe("required", () => {
     if (!result.valid) {
       expect(result.message).toBe("Value is required");
     }
+  });
+
+  it('required does not allow null or undefined',() => {
+
+    // @ts-expect-error writing a test
+    const resultUndefined = required(undefined);
+    // @ts-expect-error
+    const resultNull = required(null);
+
+    expect(resultUndefined.valid).toBe(false);
+    expect(resultNull.valid).toBe(false);
+
   });
 
   it("minLength passes", () => {

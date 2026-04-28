@@ -1,5 +1,8 @@
 //#region src/internal/string-validators.ts
-const required = (value) => value.trim().length > 0 ? ok : fail("Value is required");
+const required = (value) => {
+	value = value ?? "";
+	return value.trim().length > 0 ? ok : fail("Value is required");
+};
 const minLength = (n) => (value) => value.length >= n ? ok : fail(`Must be at least ${n} characters`);
 const maxLength = (n) => (value) => value.length <= n ? ok : fail(`Must be at less than ${n} characters`);
 //#endregion
@@ -51,6 +54,20 @@ const isValidCreditCard = (number) => {
 	};
 };
 //#endregion
-export { compose, email, exactLength, fail, isValidCreditCard, max, maxLength, min, minLength, ok, required };
+//#region src/internal/seating.ts
+function assertNever(value) {
+	throw new Error(`Unhandled case ${JSON.stringify(value)} `);
+}
+const getSeatCost = (seat) => {
+	switch (seat) {
+		case "aisle": return 100.23;
+		case "middle": return 85.43;
+		case "window": return 105.23;
+		case "jump": return 50;
+		default: assertNever(seat);
+	}
+};
+//#endregion
+export { compose, email, exactLength, fail, getSeatCost, isValidCreditCard, max, maxLength, min, minLength, ok, required };
 
 //# sourceMappingURL=index.mjs.map
