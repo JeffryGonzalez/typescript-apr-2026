@@ -52,3 +52,7 @@ export const exactLength =
   (n: number) =>
   (value: string): ValidationResult =>
     compose(minLength(n), maxLength(n))(value);
+
+  export const isEven = (n:number) =>
+     (value:number):ValidationResult =>
+     value % 2 === 0 ? ok : fail('Value has to be even')

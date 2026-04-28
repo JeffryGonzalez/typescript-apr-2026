@@ -1,8 +1,12 @@
 import type { Validator } from "../types";
 import  { ok, fail } from "./validators";
 
-export const required: Validator<string> = (value) =>
-  value.trim().length > 0 ? ok : fail("Value is required");
+export const required: Validator<string> = (value) => {
+  // if(!value) {
+  //   throw new Error("Can't work on null or undefined values");
+  // }
+  return value.trim().length > 0 ? ok : fail("Value is required");
+}
 
 export const minLength =
   (n: number): Validator<string> =>
