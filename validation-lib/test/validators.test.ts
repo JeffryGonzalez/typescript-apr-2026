@@ -15,7 +15,7 @@ describe("required", () => {
     expect(required("Hello")).toEqual({ valid: true });
   });
 
-  it.each(["", " ", "     "])("fails for an empty string", (input: string) => {
+  it.each(["", " ", "     ", "  x"])("fails for an empty string", (input: string) => {
     const result = required(input);
     expect(result.valid).toBe(false);
     // more here soon.
@@ -68,7 +68,7 @@ describe("required", () => {
       (input) => {
         expect(email(input).valid).toBe(true);
       },
-    );
+    ); 
 
     it.each(["nope", "missing@domain", "@no-local.com", ""])(
       "rejects %s",

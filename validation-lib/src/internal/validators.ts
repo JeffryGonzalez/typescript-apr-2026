@@ -1,23 +1,12 @@
-import type { ValidationResult, Validator } from "./types";
-
-const ok: { valid: true } = { valid: true };
-const fail = (message: string): { valid: false; message: string } => ({
+import { maxLength, minLength } from "./string-validators";
+import type { ValidationResult, Validator } from "../types";
+/// <reference types="node" />
+export const ok: { valid: true } = { valid: true };
+export const fail = (message: string): { valid: false; message: string } => ({
   valid: false,
   message,
 });
 
-export const required: Validator<string> = (value) =>
-  value.trim().length > 0 ? ok : fail("Value is required");
-
-export const minLength =
-  (n: number): Validator<string> =>
-  (value) =>
-    value.length >= n ? ok : fail(`Must be at least ${n} characters`);
-
-export const maxLength =
-  (n: number): Validator<string> =>
-  (value) =>
-    value.length <= n ? ok : fail(`Must be at less than ${n} characters`);
 
 export const min =
   (n: number): Validator<number> =>

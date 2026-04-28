@@ -1,11 +1,14 @@
 import { describe, it, expect } from "vitest";
 import type { Validator } from "../src/types";
+import { compose, fail, min, ok, isValidCreditCard } from "../src";
+
 
 describe("custom validator", () => {
 
+  // how the consumer of this library could create their own validations.
   type User = { dateOfBirth: Date; name: string };
 
-  const isAdult: Validator<User> = (user) => {
+  const isAdult: Validator<{dateOfBirth: Date}> = (user) => {
     const today = new Date();
     const age = today.getFullYear() - user.dateOfBirth.getFullYear();
     if (age > 18) return { valid: true };
@@ -23,34 +26,7 @@ describe("custom validator", () => {
     return { valid: false, message: "Must be at least 18 years old" };
   };
 
-  // uses Luhn algorithm to validate credit card numbers
-  // https://en.wikipedia.org/wiki/Luhn_algorithm
-  // This is just an example of a more complex validator that doesn't fit the simple patterns of the built-in ones.
-  const isValidCreditCard: Validator<string> = (number) => {
-
-    const clean = number.replace(/\D/g, "");
-
-    if (clean.length === 0) {
-      return { valid: false, message: "Must be a valid credit card number" };
-    }
-
-    let sum = 0;
-    let shouldDouble = false;
-
-    for (let i = clean.length - 1; i >= 0; i--) {
-      let digit = parseInt(clean.charAt(i), 10);
-      if (shouldDouble) {
-        digit *= 2;
-        if (digit > 9) digit -= 9;
-      }
-      sum += digit;
-      shouldDouble = !shouldDouble;
-    }
-
-    return sum % 10 === 0
-      ? { valid: true }
-      : { valid: false, message: "Must be a valid credit card number" };
-  };    
+ 
 
   it("validates that user is an adult", () => {
     const adultUser: User = {
@@ -87,4 +63,16 @@ describe("custom validator", () => {
    ])("rejects invalid credit card number: %s", (number) => {
      expect(isValidCreditCard(number).valid).toBe(false);
    });  
+
+   it('Composing on custom and actual', () => {
+      const lowerMin = min(1);
+      const upperMin = min(100);
+      const isEven:Validator<number> = (n) => n % 2 === 0 ? ok : fail('Must be even');
+
+      const inRange = compose(lowerMin, upperMin, isEven);
+
+      expect(inRange(3).valid).toBe(false);
+      expect(inRange(88).valid).toBe(true);
+
+   })
 });
