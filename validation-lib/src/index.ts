@@ -6,5 +6,8 @@ export {
     minLength,
     maxLength,
     compose,
-    min
+    min,
+    email,
+    max,
+    exactLength
 } from './validators.js';
