@@ -29,7 +29,7 @@
     "@angular/build": "^21.2.8",
     "@angular/cli": "^21.2.8",
     "@angular/compiler-cli": "^21.2.0",
-    "@hypertheory-labs/msw-lens": "^0.1.1",
+    "@hypertheory-labs/msw-lens": "^0.1.2",
     "@softarc/sheriff-core": "^0.19.6",
     "@tailwindcss/postcss": "^4.2.4",
     "daisyui": "^5.5.19",

@@ -8692,3 +8692,8 @@
 [11:54:20] 172.18.0.16      SYNC DIR    koans
 [11:55:17] 172.18.0.17      SYNC DIR    koans
 [12:10:38] 172.18.0.4       SYNC DIR    koans
+[12:51:41] 172.18.0.16      SYNC DIR    koans
+[12:51:57] 172.18.0.16      SYNC DIR    koans/src/demos
+[13:03:16] 172.18.0.11      SYNC DIR    koans/src/demos
+[13:05:14] 172.18.0.11      SYNC DIR    demos
+[13:17:06] 172.18.0.14      SYNC DIR    demos
