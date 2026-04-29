@@ -8697,3 +8697,16 @@
 [13:03:16] 172.18.0.11      SYNC DIR    koans/src/demos
 [13:05:14] 172.18.0.11      SYNC DIR    demos
 [13:17:06] 172.18.0.14      SYNC DIR    demos
+[13:37:23] 172.18.0.12      SYNC DIR    koans/src/demos
+[13:37:44] 172.18.0.12      SYNC FILE   koans/src/01-primitives.spec.ts
+[13:40:37] 172.18.0.15      SYNC DIR    demos/koans-jeff
+[13:42:00] 172.18.0.19      SYNC DIR    koans
+[13:42:17] 172.18.0.19      SYNC DIR    demos
+[13:45:59] 172.18.0.11      SYNC DIR    demos
+[13:46:02] 172.18.0.16      SYNC DIR    koans/src
+[14:02:06] 172.18.0.11      SYNC DIR    koans/src/demos
+[14:20:27] 172.18.0.17      SYNC DIR    koans/src/demos
+[14:20:51] 172.18.0.17      SYNC DIR    demos
+[14:34:55] 172.18.0.15      SYNC DIR    koans/src/demos/hr
+[14:35:50] 172.18.0.11      SYNC FILE   koans/src/demos/hr/index.ts
+[14:36:07] 172.18.0.11      SYNC DIR    koans/src/demos
