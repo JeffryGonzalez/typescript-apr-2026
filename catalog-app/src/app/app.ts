@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { NAV_SECTIONS } from './shared/nav-config';
+import { required, minLength } from '@hypertheory-labs/validation-lib';
+
 
 
 @Component({
@@ -39,5 +41,10 @@ export class App {
   sections = NAV_SECTIONS;
 
 
+  constructor() {
+    console.log(required('dog'));
+    const r2 = minLength(3);
+    // console.log(r2());
+  }
 
 }
